@@ -8,6 +8,7 @@ class App extends Component {
 
     constructor(props) {
       super(props);
+      this.addNote = this.addNote.bind(this);
 //Set up state to setup React state of my component
       this.state = {
         notes: [
@@ -17,6 +18,9 @@ class App extends Component {
       }
     }
 
+    addNote(note){
+      this.state.notes.push(note);
+    }
 
       render() {
       return (
@@ -29,7 +33,7 @@ class App extends Component {
                       )
                 })
               }
-            <NoteForm />
+            <NoteForm addNote={this.addNote}/>
         </div>    
       );
     }

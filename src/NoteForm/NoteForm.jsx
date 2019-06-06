@@ -9,12 +9,24 @@ export default class NoteForm extends Component {
             newNoteContent: '', 
         };
         this.handleUserInput = this.handleUserInput.bind(this);
+        this.handleUserInput = this.writeNote.bind(this);
+   
     }
 
     //The value of an input box gonna change cause of this
     handleUserInput(e){
+        console.log(this)
         this.setState({
             newNoteContent: e.target.value, //the value of the text input
+        })
+    }
+
+    writeNote = () => {
+        this.props.addNote (this.state.newNoteContent);
+        
+    
+        this.setState({
+            newNoteContent: '',
         })
     }
     render() {
@@ -23,7 +35,7 @@ export default class NoteForm extends Component {
                 <input placeholder="write a new note..."
                 value={this.state.newNoteContent}
                 onChange={this.handleUserInput}/>
-                <button>Add Note</button>
+                <button onClick={this.writeNote}>Add Note</button>
             </div>
         )
     }
